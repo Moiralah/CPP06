@@ -6,7 +6,7 @@
 /*   By: huidris <huidris@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 16:42:04 by huidris           #+#    #+#             */
-/*   Updated: 2025/11/15 05:37:37 by huidris          ###   ########.fr       */
+/*   Updated: 2025/11/17 20:32:57 by huidris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ int main(int ac, char **av)
 	ScalarConverter::convert("nanf");
 	ScalarConverter::convert("42.0f");
 	ScalarConverter::convert("nan");
+	ScalarConverter::convert("5741640684686346");
+	ScalarConverter::convert("538260274094907.887f");
+	ScalarConverter::convert("5724467279209.87");
 
 	return 0;
 }

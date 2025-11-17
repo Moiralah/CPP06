@@ -6,7 +6,7 @@
 /*   By: huidris <huidris@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 16:45:31 by huidris           #+#    #+#             */
-/*   Updated: 2025/11/15 05:30:13 by huidris          ###   ########.fr       */
+/*   Updated: 2025/11/17 20:29:45 by huidris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 #include <typeinfo>
 #include <sstream>
 #include <string>
+#include <limits>
+#include <climits>
+#include <cerrno>
+#include <stdlib.h>
 
 class ScalarConverter
 {
@@ -30,13 +34,16 @@ class ScalarConverter
 		ScalarConverter &operator=(const ScalarConverter &);
 		~ScalarConverter();
 
-		static std::string charConvert(std::string input, int type);
-		static std::string intConvert(std::string input, int type);
-		static std::string floatConvert(std::string input, int type);
-		static std::string doubleConvert(std::string input, int type);
+		static void charConvert(std::string input);
+		static void intConvert(std::string input);
+		static void floatConvert(std::string input);
+		static void doubleConvert(std::string input);
+		static void pseudoConvert(std::string input);
 
 		static bool isInt(std::string input);
+		static bool isOverflow(std::string input, int type);
 		static int getType(std::string input);
+		static void convertType(std::string input, int type);
 
 		enum Type
 		{
