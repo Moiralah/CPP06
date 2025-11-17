@@ -6,7 +6,7 @@
 /*   By: huidris <huidris@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 17:48:40 by huidris           #+#    #+#             */
-/*   Updated: 2025/11/17 21:24:20 by huidris          ###   ########.fr       */
+/*   Updated: 2025/11/18 00:06:02 by huidris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,14 @@ void ScalarConverter::intConvert(std::string input)
 	float	f;
 	double	d;
 
-	if (isOverflow(input, INT))
+	if (isOverflow(input))
+	{
+		std::cout << "char	: impossible" << std::endl;
+		std::cout << "int	: impossible" << std::endl;
+		std::cout << "float	: impossible" << std::endl;
+		std::cout << "double	: impossible" << std::endl;
 		return;
+	}
 	std::istringstream iss(input);
 	iss >> i;
 
@@ -122,7 +128,7 @@ void ScalarConverter::floatConvert(std::string input)
 	iss >> f;
 	if (iss.fail())
 	{
-		isOverflow(input, FLOAT);
+		std::cout << "Invalid input" << std::endl;
 		return;
 	}
 
@@ -160,7 +166,7 @@ void ScalarConverter::doubleConvert(std::string input)
 	iss >> d;
 	if (iss.fail())
 	{
-		isOverflow(input, DOUBLE);
+		std::cout << "Invalid input" << std::endl;
 		return;
 	}
 
@@ -225,30 +231,15 @@ bool ScalarConverter::isInt(std::string input)
 	return true;
 }
 
-bool ScalarConverter::isOverflow(std::string input, int type)
+bool ScalarConverter::isOverflow(std::string input)
 {
 	char* end_ptr;
 	errno = 0;
 
-	if (type == INT)
-	{
-		long val = std::strtol(input.c_str(), &end_ptr, 10);
-		if (errno == ERANGE)
-		{
-			std::cout << "Invalid input" << std::endl;
-		}
-		else if (val > INT_MAX || val < INT_MIN)
-		{
-			std::cout << "Overflow" << std::endl;
-		}
-		else
-			return false;
-	}
-	std::cout << "char	: impossible" << std::endl;
-	std::cout << "int	: impossible" << std::endl;
-	std::cout << "float	: impossible" << std::endl;
-	std::cout << "double	: impossible" << std::endl;
-	return true;
+	long val = std::strtol(input.c_str(), &end_ptr, 10);
+	if (errno == ERANGE || val > INT_MAX || val < INT_MIN)
+		return true;
+	return false;
 }
 
 int ScalarConverter::getType(std::string input)

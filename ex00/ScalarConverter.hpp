@@ -6,7 +6,7 @@
 /*   By: huidris <huidris@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 16:45:31 by huidris           #+#    #+#             */
-/*   Updated: 2025/11/17 20:29:45 by huidris          ###   ########.fr       */
+/*   Updated: 2025/11/17 22:43:16 by huidris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ class ScalarConverter
 		static void pseudoConvert(std::string input);
 
 		static bool isInt(std::string input);
-		static bool isOverflow(std::string input, int type);
+		static bool isOverflow(std::string input);
 		static int getType(std::string input);
 		static void convertType(std::string input, int type);
 
