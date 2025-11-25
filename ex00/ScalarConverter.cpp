@@ -6,7 +6,7 @@
 /*   By: huidris <huidris@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 17:48:40 by huidris           #+#    #+#             */
-/*   Updated: 2025/11/18 00:06:02 by huidris          ###   ########.fr       */
+/*   Updated: 2025/11/25 16:43:21 by huidris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -237,7 +237,19 @@ bool ScalarConverter::isOverflow(std::string input)
 	errno = 0;
 
 	long val = std::strtol(input.c_str(), &end_ptr, 10);
-	if (errno == ERANGE || val > INT_MAX || val < INT_MIN)
+	if (val > INT_MAX || val < INT_MIN)
+		return true;
+	return false;
+}
+
+bool ScalarConverter::isDoubleDot(std::string input)
+{
+	int i = 0;
+	size_t pos = -1;
+
+	while((pos = input.find('.', pos + 1)) != std::string::npos)
+		i++;
+	if (i > 1)
 		return true;
 	return false;
 }
@@ -247,12 +259,14 @@ int ScalarConverter::getType(std::string input)
 	int len = input.size();
 	if (len == 3 && input[0] == '\'' && input[2] == '\'')
 		return CHAR;
+	if (isDoubleDot(input))
+		return INVALIDINPUT;
 	if (input == "nan" || input == "-nan" || input == "+nan"
 		|| input == "inf" || input == "-inf" || input == "+inf"
 		|| input == "nanf" || input == "-nanf" || input == "+nanf"
 		|| input == "inff" || input == "-inff" || input == "+inff")
 		return PSEUDOLITERAL;
-	if (isInt(input) == true)
+	if (isInt(input))
 		return INT;
 	if (input.find('.') != std::string::npos && input[len - 1] == 'f')
 		return FLOAT;

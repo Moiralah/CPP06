@@ -6,7 +6,7 @@
 /*   By: huidris <huidris@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/13 16:45:31 by huidris           #+#    #+#             */
-/*   Updated: 2025/11/17 22:43:16 by huidris          ###   ########.fr       */
+/*   Updated: 2025/11/25 15:37:27 by huidris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ class ScalarConverter
 
 		static bool isInt(std::string input);
 		static bool isOverflow(std::string input);
+		static bool isDoubleDot(std::string input);
+
 		static int getType(std::string input);
 		static void convertType(std::string input, int type);
 
@@ -54,7 +56,6 @@ class ScalarConverter
 			PSEUDOLITERAL,
 			INVALIDINPUT
 		};
-
 };
 
 

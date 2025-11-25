@@ -6,11 +6,11 @@
 #    By: huidris <huidris@student.42kl.edu.my>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/13 15:38:23 by huidris           #+#    #+#              #
-#    Updated: 2025/11/13 17:09:57 by huidris          ###   ########.fr        #
+#    Updated: 2025/11/18 00:16:43 by huidris          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = convert
+NAME	= convert
 
 FLAGS	= -Wall -Wextra -Werror -std=c++98
 
