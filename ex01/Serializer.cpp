@@ -6,7 +6,7 @@
 /*   By: huidris <huidris@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 00:20:45 by huidris           #+#    #+#             */
-/*   Updated: 2025/11/19 01:44:03 by huidris          ###   ########.fr       */
+/*   Updated: 2025/11/19 19:06:42 by huidris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,10 @@ Serializer::~Serializer(){}
 
 uintptr_t Serializer::serialize(Data* ptr)
 {
-
-
-
 	return reinterpret_cast<uintptr_t>(ptr);
 }
 
 Data* Serializer::deserialize(uintptr_t raw)
 {
-
-
-	
-
 	return reinterpret_cast<Data*>(raw);
 }
